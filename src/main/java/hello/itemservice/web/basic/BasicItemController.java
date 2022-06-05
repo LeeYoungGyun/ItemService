@@ -57,15 +57,26 @@ public class BasicItemController {
     }
 
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV2(@ModelAttribute("item") Item item, Model model) {
 
         itemRepository.save(item);
-        model.addAttribute("item", item);
+//        model.addAttribute("item", item); // 자동 추가, 생략 가능
 
         return "basic/item";
     }
 
+//    @PostMapping("/add")
+    public String addItemV3(@ModelAttribute Item item, Model model) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV4(Item item) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
 
      /*
      * 테스트용 데이터 추가
